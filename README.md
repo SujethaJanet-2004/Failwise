@@ -1,4 +1,4 @@
-FailWise 🚀
+                                        FailWise 🚀
 
 Turn interview failures into data-driven insights
 
