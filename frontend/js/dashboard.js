@@ -4,7 +4,7 @@
 // ==============================
 
 // Backend API endpoint
-const API_URL = "http://127.0.0.1:5000/attempts";
+const API_URL = "https://failwise.onrender.com/attempts";
 
 // ------------------------------
 // 1. Get references to UI elements

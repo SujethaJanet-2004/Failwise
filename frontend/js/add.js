@@ -5,7 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const API_URL = "http://127.0.0.1:5000/attempts";
+  const API_URL = "https://failwise.onrender.com/attempts";
 
   const form = document.getElementById("addAttemptForm");
   const formTitle = document.getElementById("formTitle");
