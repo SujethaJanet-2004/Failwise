@@ -4,106 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>FailWise | Add Attempt</title>
+    <title>FailWise | Add / Edit Attempt</title>
 </head>
+
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Add Interview Attempt</h1>
-        <p>Log one interview round to analyze your progress.</p>
-    </header>
+<header>
+    <!-- This title will change dynamically in Edit mode -->
+    <h1 id="formTitle">Add Interview Attempt</h1>
+    <p>Log one interview round to analyze your progress.</p>
+</header>
 
-    <!-- Main Content -->
-    <main>
+<main>
 
-        <section>
-            <form>
+    <section>
+        <!-- Form ID is CRITICAL -->
+        <form id="addAttemptForm">
 
-                <div>
-                    <label for="company">Company Name</label><br>
-                    <input type="text" id="company" name="company">
-                </div>
+            <div>
+                <label for="companyName">Company Name</label>
+                <input type="text" id="companyName" required>
+            </div>
 
-                <br>
+            <div>
+                <label for="roundType">Round Type</label>
+                <select id="roundType" required>
+                    <option value="">Select round type</option>
+                    <option>Aptitude</option>
+                    <option>Coding</option>
+                    <option>Communication</option>
+                    <option>Interview</option>
+                </select>
+            </div>
 
-                <div>
-                    <label for="roundType">Round Type</label><br>
-                    <select id="roundType" name="roundType">
-                        <option value="">Select round type</option>
-                        <option>Aptitude</option>
-                        <option>Coding</option>
-                        <option>Communication</option>
-                        <option>Interview</option>
-                    </select>
-                </div>
+            <div>
+                <label for="roundSubType">Round Sub-Type</label>
+                <select id="roundSubType" required>
+                    <option value="">Select sub-type</option>
+                    <option>HR / Behavioral</option>
+                    <option>Technical</option>
+                    <option>Mixed</option>
+                </select>
+            </div>
 
-                <br>
+            <div>
+                <label for="topic">Primary Topic / Skill</label>
+                <input type="text" id="topic" required>
+            </div>
 
-                <div>
-                    <label for="roundSubType">Round Sub-Type</label><br>
-                    <select id="roundSubType" name="roundSubType">
-                        <option value="">Select sub-type</option>
-                        <option>HR / Behavioral</option>
-                        <option>Technical</option>
-                        <option>Mixed</option>
-                    </select>
-                </div>
+            <div>
+                <label for="date">Date Attended</label>
+                <input type="date" id="date" required>
+            </div>
 
-                <br>
+            <div>
+                <label for="outcome">Outcome</label>
+                <select id="outcome" required>
+                    <option value="">Select outcome</option>
+                    <option>Pass</option>
+                    <option>Fail</option>
+                </select>
+            </div>
 
-                <div>
-                    <label for="topic">Primary Topic / Skill</label><br>
-                    <input type="text" id="topic" name="topic">
-                </div>
+            <div>
+                <label for="selfScore">Self-Score (1–10)</label>
+                <input type="number" id="selfScore" min="1" max="10">
+            </div>
 
-                <br>
+            <div>
+                <label for="reason">Failure / Performance Reason</label>
+                <textarea id="reason" rows="4"></textarea>
+            </div>
 
-                <div>
-                    <label for="date">Date Attended</label><br>
-                    <input type="date" id="date" name="date">
-                </div>
+            <!-- Button text can also be changed in edit mode later -->
+            <button type="submit" id="submitBtn">Save Attempt</button>
 
-                <br>
+        </form>
+    </section>
 
-                <div>
-                    <label for="outcome">Outcome</label><br>
-                    <select id="outcome" name="outcome">
-                        <option value="">Select outcome</option>
-                        <option>Pass</option>
-                        <option>Fail</option>
-                    </select>
-                </div>
+    <section>
+        <a href="index.html" class="add-btn">← Back to Dashboard</a>
+    </section>
 
-                <br>
+</main>
 
-                <div>
-                    <label for="score">Self-Score (1–10)</label><br>
-                    <input type="number" id="score" name="score" min="1" max="10">
-                </div>
-
-                <br>
-
-                <div>
-                    <label for="reason">Failure / Performance Reason</label><br>
-                    <textarea id="reason" name="reason" rows="4"></textarea>
-                </div>
-
-                <br>
-
-                <button type="submit">Save Attempt</button>
-
-            </form>
-        </section>
-
-        <section>
-            <a href="index.html">← Back to Dashboard</a>
-        </section>
-
-    </main>
-
-    <script src="./js/data.js"></script>
-    <script src="./js/add.js"></script>
+<!-- JS must always be last -->
+<script src="./js/add.js"></script>
 
 </body>
 </html>
+
+
+

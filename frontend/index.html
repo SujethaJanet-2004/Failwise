@@ -1,70 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/style.css">
-        <title>
-            Failwise
-        </title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>FailWise</title>
+</head>
 
-    <body>
+<body>
 
-        <header>
-            <h2>Failwise</h2>
-            <p>Turn interview failures into insights</p>
-        </header>
+<header>
+    <h2>FailWise</h2>
+    <p>Turn interview failures into insights</p>
+</header>
 
-        <main>
+<main>
 
-            <section>
-                <h1>Overview</h1>
-                <p>Total Attempts : <strong>--</strong></p>
-                <p>Most Failed Topic: <strong>--</strong></p>
-            </section>
+    <!-- ======================
+         Overview
+    ======================= -->
+    <section>
+        <h1>Overview</h1>
 
-            <section>
-                <h2>Insights</h2>
-                <p>
-                    Weakest Topic:
-                    <strong id="WeakestTopic">--</strong>
-                </p>
-                <p>
-                    Failure Rate:
-                    <strong id="failureRate">--%</strong>
-                </p>
-                <p id="recommendation">
-                    Not enough data to generate recommendation yet.
-                </p>
-            </section>
+        <div class="overview-grid">
+            <div class="stat">
+                Total Attempts:
+                <strong id="totalAttempts">--</strong>
+            </div>
 
+            <div class="stat">
+                Most Failed Topic:
+                <strong id="mostFailedTopic">--</strong>
+            </div>
+        </div>
+    </section>
 
-            <section>
-                <h2>Attempt History</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Company</th>
-                            <th>Round</th>
-                            <th>Topic</th>
-                            <th>Date</th>
-                            <th>Outcome</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Attempts will appear here -->
-                    </tbody>
-                </table>
-            </section>
+    <!-- ======================
+         Insights
+    ======================= -->
+    <section>
+        <h2>Insights</h2>
 
-            <section>
-                <a href="add.html">Add New Attempt</a>
-            </section>
+        <p>
+            Weakest Topic:
+            <strong id="weakestTopic">--</strong>
+        </p>
 
-        </main>
-        <script src="./js/data.js"></script>
-        <script src = "./js/dashboard.js"></script>
+        <p>
+            Failure Rate:
+            <strong id="failureRate">--%</strong>
+        </p>
 
-    </body>
+        <p id="recommendation" class="insight-warning">
+            Not enough data to generate recommendation yet.
+        </p>
+    </section>
+
+    <!-- ======================
+         Attempt History
+    ======================= -->
+    <section>
+        <h2>Attempt History</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Round</th>
+                    <th>Topic</th>
+                    <th>Date</th>
+                    <th>Outcome</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Rows injected by dashboard.js -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ======================
+         Action
+    ======================= -->
+    <section>
+        <a href="add.html" class="add-btn">Add New Attempt</a>
+    </section>
+
+</main>
+
+<!-- Dashboard logic -->
+<script src="./js/dashboard.js"></script>
+
+</body>
 </html>
+
