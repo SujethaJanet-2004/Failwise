@@ -263,6 +263,6 @@ button:hover {
 }
 
 table {
-    min-width: 700px; /* prevents column squishing on mobile */
+    min-width: 850px; /* prevents column squishing on mobile */
 }
 
