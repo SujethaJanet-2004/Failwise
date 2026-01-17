@@ -3,16 +3,16 @@
 ========================= */
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: #f1f5f9;
-    color: #0f172a;
-    margin: 0;
-    padding: 24px;
-    line-height: 1.5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  margin: 0;
+  padding: 24px;
+  line-height: 1.5;
 }
 
 /* =========================
@@ -20,23 +20,23 @@ body {
 ========================= */
 
 h1 {
-    font-size: 28px;
-    margin-bottom: 4px;
+  font-size: 28px;
+  margin-bottom: 4px;
 }
 
 h2 {
-    font-size: 20px;
-    margin-bottom: 12px;
+  font-size: 20px;
+  margin-bottom: 12px;
 }
 
 p {
-    margin: 6px 0;
-    font-size: 14px;
-    color: #334155;
+  margin: 6px 0;
+  font-size: 14px;
+  color: #334155;
 }
 
 strong {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 /* =========================
@@ -44,12 +44,12 @@ strong {
 ========================= */
 
 header {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 main {
-    max-width: 960px;
-    margin: auto;
+  max-width: 960px;
+  margin: auto;
 }
 
 /* =========================
@@ -57,12 +57,12 @@ main {
 ========================= */
 
 section {
-    background-color: #ffffff;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  background-color: #ffffff;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* =========================
@@ -71,9 +71,9 @@ section {
 
 section:first-of-type,
 section:nth-of-type(2) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
 }
 
 /* =========================
@@ -81,8 +81,8 @@ section:nth-of-type(2) {
 ========================= */
 
 section:first-of-type strong {
-    font-size: 20px;
-    color: #2563eb;
+  font-size: 20px;
+  color: #2563eb;
 }
 
 /* =========================
@@ -91,8 +91,8 @@ section:first-of-type strong {
 
 #weakestTopic,
 #failureRate {
-    font-size: 16px;
-    color: #dc2626;
+  font-size: 16px;
+  color: #dc2626;
 }
 
 /* =========================
@@ -100,152 +100,69 @@ section:first-of-type strong {
 ========================= */
 
 #recommendation {
-    margin-top: 12px;
-    padding: 12px 14px;
-    background-color: #fef2f2;
-    border-left: 4px solid #dc2626;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #7f1d1d;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background-color: #fef2f2;
+  border-left: 4px solid #dc2626;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #7f1d1d;
 }
 
 /* =========================
-   Table Styling
+   Table Styling (Desktop)
 ========================= */
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 12px;
-    font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
 }
 
 th {
-    text-align: left;
-    padding: 12px;
-    background-color: #f8fafc;
-    border-bottom: 2px solid #e5e7eb;
-    font-weight: 600;
-    color: #0f172a;
+  text-align: left;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 600;
+  color: #0f172a;
 }
 
 td {
-    padding: 12px;
-    border-bottom: 1px solid #e5e7eb;
-    color: #334155;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #334155;
 }
 
 tbody tr:hover {
-    background-color: #f8fafc;
+  background-color: #f8fafc;
 }
 
 /* =========================
-   Action Buttons (Edit / Add)
+   Action Buttons
 ========================= */
 
 .action-btn {
-    border: none;
-    padding: 6px 10px;
-    font-size: 13px;
-    border-radius: 6px;
-    cursor: pointer;
+  border: none;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .edit-btn {
-    background-color: #facc15;
-    color: #713f12;
+  background-color: #facc15;
+  color: #713f12;
 }
 
 .edit-btn:hover {
-    background-color: #eab308;
-}
-
-.add-btn {
-    display: inline-block;
-    padding: 10px 16px;
-    background-color: #2563eb;
-    color: white;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.add-btn:hover {
-    background-color: #1e40af;
-}
-
-/* =========================
-   Links
-========================= */
-
-a {
-    color: #2563eb;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   Forms (Add Attempt Page)
-========================= */
-
-form {
-    max-width: 600px;
-}
-
-form div {
-    margin-bottom: 16px;
-}
-
-label {
-    font-size: 13px;
-    font-weight: 500;
-    display: inline-block;
-    margin-bottom: 4px;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 1px #2563eb;
-}
-
-/* =========================
-   Submit Button
-========================= */
-
-button {
-    background-color: #2563eb;
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #1e40af;
+  background-color: #eab308;
 }
 
 .delete-btn {
   background-color: #dc2626;
+  color: white;
   margin-left: 6px;
 }
 
@@ -253,16 +170,132 @@ button:hover {
   background-color: #b91c1c;
 }
 
+.add-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.add-btn:hover {
+  background-color: #1e40af;
+}
+
 /* =========================
-   Responsive Table (Mobile)
+   Links
 ========================= */
 
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
+a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-table {
-    min-width: 850px; /* prevents column squishing on mobile */
+a:hover {
+  text-decoration: underline;
 }
+
+/* =========================
+   Forms
+========================= */
+
+form {
+  max-width: 600px;
+}
+
+form div {
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1e40af;
+}
+
+/* =========================
+   MOBILE RESPONSIVE TABLE
+   (REAL FIX)
+========================= */
+
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px;
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #475569;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+}
+
 

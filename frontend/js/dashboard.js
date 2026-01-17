@@ -1,13 +1,14 @@
 // ==============================
 // DASHBOARD LOGIC (FailWise)
 // Backend-connected + Edit + Delete
+// Mobile responsive compatible
 // ==============================
 
-// Backend API endpoint
+// Backend API endpoint (Render)
 const API_URL = "https://failwise.onrender.com/attempts";
 
 // ------------------------------
-// 1. Get references to UI elements
+// 1. UI references
 // ------------------------------
 
 const totalAttemptsEl = document.getElementById("totalAttempts");
@@ -19,38 +20,29 @@ const failureRateEl = document.getElementById("failureRate");
 const recommendationEl = document.getElementById("recommendation");
 
 // ------------------------------
-// 2. Fetch attempts from backend
+// 2. Fetch attempts
 // ------------------------------
 
 fetch(API_URL)
-  .then(response => response.json())
-  .then(attempts => {
-    renderDashboard(attempts);
-  })
-  .catch(error => {
-    console.error("Error fetching attempts:", error);
-  });
+  .then(res => res.json())
+  .then(data => renderDashboard(data))
+  .catch(err => console.error("Failed to load attempts:", err));
 
 // ------------------------------
-// 3. Main dashboard render function
+// 3. Render Dashboard
 // ------------------------------
 
 function renderDashboard(attempts) {
 
-  // --------------------------
-  // Total attempts
-  // --------------------------
+  // ---------- Total Attempts ----------
   totalAttemptsEl.textContent = attempts.length;
 
-  // --------------------------
-  // Find most failed topic
-  // --------------------------
+  // ---------- Most Failed Topic ----------
   const topicFailureCount = {};
 
-  attempts.forEach(attempt => {
-    if (attempt.outcome === "Fail") {
-      const topic = attempt.topic;
-      topicFailureCount[topic] = (topicFailureCount[topic] || 0) + 1;
+  attempts.forEach(a => {
+    if (a.outcome === "Fail") {
+      topicFailureCount[a.topic] = (topicFailureCount[a.topic] || 0) + 1;
     }
   });
 
@@ -66,21 +58,19 @@ function renderDashboard(attempts) {
 
   failedTopicEl.textContent = mostFailedTopic;
 
-  // --------------------------
-  // Populate Attempt History table
-  // --------------------------
+  // ---------- Attempt History ----------
   tableBody.innerHTML = "";
 
   attempts.forEach(attempt => {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td>${attempt.company_name}</td>
-      <td>${attempt.round_type}</td>
-      <td>${attempt.topic}</td>
-      <td>${attempt.date_attended}</td>
-      <td>${attempt.outcome}</td>
-      <td>
+      <td data-label="Company">${attempt.company_name}</td>
+      <td data-label="Round">${attempt.round_type}</td>
+      <td data-label="Topic">${attempt.topic}</td>
+      <td data-label="Date">${attempt.date_attended}</td>
+      <td data-label="Outcome">${attempt.outcome}</td>
+      <td data-label="Actions">
         <button class="action-btn edit-btn" onclick="editAttempt(${attempt.id})">
           Edit
         </button>
@@ -93,73 +83,47 @@ function renderDashboard(attempts) {
     tableBody.appendChild(row);
   });
 
-  // --------------------------
-  // Advanced Analytics (Insights)
-  // --------------------------
-
+  // ---------- Analytics ----------
   const topicStats = {};
 
-  attempts.forEach(attempt => {
-    const topic = attempt.topic;
-
-    if (!topicStats[topic]) {
-      topicStats[topic] = {
-        total: 0,
-        fail: 0,
-        pass: 0
-      };
+  attempts.forEach(a => {
+    if (!topicStats[a.topic]) {
+      topicStats[a.topic] = { total: 0, fail: 0 };
     }
-
-    topicStats[topic].total += 1;
-
-    if (attempt.outcome === "Fail") {
-      topicStats[topic].fail += 1;
-    } else {
-      topicStats[topic].pass += 1;
-    }
+    topicStats[a.topic].total++;
+    if (a.outcome === "Fail") topicStats[a.topic].fail++;
   });
 
-  // Calculate failure rate
-  for (let topic in topicStats) {
-    const stats = topicStats[topic];
-    stats.failureRate = Math.round((stats.fail / stats.total) * 100);
-  }
-
-  // Identify weakest topic (only if meaningful data exists)
   let weakestTopic = "--";
   let highestFailureRate = 0;
 
   for (let topic in topicStats) {
     const stats = topicStats[topic];
-
-    // Defensive analytics: minimum 2 attempts
-    if (stats.total >= 2 && stats.failureRate > highestFailureRate) {
-      highestFailureRate = stats.failureRate;
-      weakestTopic = topic;
+    if (stats.total >= 2) {
+      const rate = Math.round((stats.fail / stats.total) * 100);
+      if (rate > highestFailureRate) {
+        highestFailureRate = rate;
+        weakestTopic = topic;
+      }
     }
   }
 
-  // --------------------------
-  // Update Insights UI
-  // --------------------------
-
+  // ---------- Insights UI ----------
   if (weakestTopic !== "--") {
     weakestTopicEl.textContent = weakestTopic;
-    failureRateEl.textContent = highestFailureRate + "%";
-
+    failureRateEl.textContent = `${highestFailureRate}%`;
     recommendationEl.textContent =
       "You are consistently failing this topic. Prioritize revising it before your next interview.";
   } else {
     weakestTopicEl.textContent = "--";
     failureRateEl.textContent = "--%";
-
     recommendationEl.textContent =
       "Not enough data to generate recommendation yet. Keep logging interviews.";
   }
 }
 
 // ------------------------------
-// 4. Edit handler
+// 4. Edit Attempt
 // ------------------------------
 
 function editAttempt(id) {
@@ -167,27 +131,17 @@ function editAttempt(id) {
 }
 
 // ------------------------------
-// 5. Delete handler
+// 5. Delete Attempt
 // ------------------------------
 
 function deleteAttempt(id) {
-  const confirmDelete = confirm(
-    "Are you sure you want to delete this interview attempt?"
-  );
+  if (!confirm("Are you sure you want to delete this attempt?")) return;
 
-  if (!confirmDelete) return;
-
-  fetch(`${API_URL}/${id}`, {
-    method: "DELETE"
-  })
+  fetch(`${API_URL}/${id}`, { method: "DELETE" })
     .then(res => {
-      if (!res.ok) {
-        throw new Error("Delete failed");
-      }
-      // Reload dashboard after successful delete
+      if (!res.ok) throw new Error("Delete failed");
       location.reload();
     })
-    .catch(() => {
-      alert("Failed to delete attempt. Please try again.");
-    });
+    .catch(() => alert("Failed to delete attempt"));
 }
+
