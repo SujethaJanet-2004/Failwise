@@ -252,3 +252,17 @@ button:hover {
 .delete-btn:hover {
   background-color: #b91c1c;
 }
+
+/* =========================
+   Responsive Table (Mobile)
+========================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    min-width: 700px; /* prevents column squishing on mobile */
+}
+
